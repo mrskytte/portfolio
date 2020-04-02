@@ -1,0 +1,48 @@
+:root {
+  --font-color: 0, 0, 0;
+  --accent: 157, 40, 162;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+header {
+  height: 14%;
+  nav {
+    height: 100%;
+    width: 88%;
+    margin: auto;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    ul {
+      display: flex;
+      width: 100%;
+      justify-content: end;
+      align-items: center;
+      li {
+        margin-right: 12.5%;
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: rgb(var(--font-color));
+        }
+      }
+      .active {
+        color: rgb(var(--accent));
+      }
+      li:first-child {
+        margin-right: auto;
+      }
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
