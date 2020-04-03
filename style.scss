@@ -1,5 +1,5 @@
 :root {
-  --font-color: 0, 0, 0;
+  --font-color: 24, 24, 24;
   --accent: 157, 40, 162;
 }
 
@@ -138,4 +138,76 @@ main {
 
 .left-contact-text {
   text-align: right;
+}
+
+#portfolio-header {
+  height: 14%;
+  background-color: transparent;
+}
+
+#portfolio-main {
+  scroll-snap-type: y mandatory;
+  overflow: scroll;
+}
+
+.project {
+  position: relative;
+  height: 86vh;
+  scroll-snap-align: center;
+  transform: scale(0.9);
+  transition: transform 1s;
+  background-color: #ddd;
+}
+
+.content {
+  display: flex;
+  height: 90%;
+  width: 100%;
+  align-items: center;
+}
+
+.project:hover {
+  transform: scale(1);
+}
+
+.website-preview {
+  width: 50%;
+  height: 60%;
+  background-color: salmon;
+}
+
+.project-summary {
+  width: 30%;
+  height: 80%;
+  margin-left: 14%;
+  color: rgb(var(--font-color));
+  h1 {
+    font-size: 3.5vw;
+    font-weight: 500;
+    margin-bottom: 1em;
+  }
+  p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 2.5em;
+  }
+}
+
+.explore-button {
+  position: absolute;
+  right: 5%;
+  cursor: pointer;
+  .explore-line {
+    position: absolute;
+    height: 2px;
+    width: 1.5rem;
+    background-color: rgb(var(--font-color));
+    margin: 0.5em auto auto 0.5em;
+  }
+  &:hover {
+    color: rgb(var(--accent));
+    .explore-line {
+      background-color: rgb(var(--accent));
+    }
+  }
 }
