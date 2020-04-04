@@ -157,13 +157,24 @@ main {
   transform: scale(0.9);
   transition: transform 1s;
   background-color: #ddd;
+  overflow-y: scroll;
 }
 
 .content {
   display: flex;
   height: 90%;
-  width: 100%;
+  width: 100vw;
+}
+
+.front-section-container,
+.section-container {
+  display: flex;
+  width: 80vw;
+  flex-shrink: 0;
   align-items: center;
+  &:first-child {
+    width: 100vw;
+  }
 }
 
 .project:hover {
@@ -176,38 +187,102 @@ main {
   background-color: salmon;
 }
 
-.project-summary {
+.project-text {
   width: 30%;
   height: 80%;
-  margin-left: 14%;
   color: rgb(var(--font-color));
   h1 {
     font-size: 3.5vw;
     font-weight: 500;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
   p {
     font-size: 1.1em;
     font-weight: 300;
-    line-height: 2.5em;
+    line-height: 2em;
   }
 }
 
+.project-summary {
+  margin-left: 14%;
+}
+
+.content-container {
+  height: auto;
+  width: 45%;
+  p {
+    margin-top: auto;
+    width: 80%;
+  }
+}
+
+.content-image {
+  width: 30vw;
+  height: 60%;
+  background-color: rebeccapurple;
+}
+
+.section-container:nth-child(even) {
+  .content-container {
+    margin-top: auto;
+  }
+  .content-image {
+    margin-bottom: auto;
+  }
+}
+
+.section-container:nth-child(odd) {
+  .content-container {
+    margin-bottom: auto;
+  }
+  .content-image {
+    margin-top: auto;
+  }
+}
+
+#project-one-scroll {
+  height: 400vw;
+  width: 2rem;
+  background-color: red;
+  position: absolute;
+}
+
 .explore-button {
+  transition: transform 0.5s;
   position: absolute;
   right: 5%;
   cursor: pointer;
   .explore-line {
-    position: absolute;
-    height: 2px;
-    width: 1.5rem;
     background-color: rgb(var(--font-color));
-    margin: 0.5em auto auto 0.5em;
   }
   &:hover {
     color: rgb(var(--accent));
+    transform: scale(1.05);
     .explore-line {
       background-color: rgb(var(--accent));
+      transform: scale(1.05);
+    }
+  }
+}
+
+.explore-line {
+  position: absolute;
+  height: 2px;
+  width: 1.5rem;
+  background-color: rgb(var(--accent));
+  margin: 0.5em auto auto 0.5em;
+}
+
+.website-button {
+  transition: transform 0.5s;
+  margin: auto 0 auto 0;
+  padding-right: 2.5rem;
+  flex-shrink: 0;
+  width: auto;
+  &:hover {
+    transform: scale(1.05);
+    .explore-line {
+      transform: scale(1.05);
     }
   }
 }
