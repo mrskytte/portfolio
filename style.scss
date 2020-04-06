@@ -17,6 +17,7 @@ a {
 
 body {
   height: 100vh;
+  background-color: #fefefe;
 }
 
 header {
@@ -58,12 +59,19 @@ main {
   height: 86%;
 }
 
+#index-main {
+  text-align: center;
+}
+
 #threed-container {
   width: 70%;
   height: 60%;
-  outline: 3px solid black;
   margin: auto;
-  margin-top: 100%;
+  margin-top: 4%;
+}
+
+#trickbutton {
+  margin-top: 3%;
 }
 
 #bio-main {
