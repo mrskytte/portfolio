@@ -1,6 +1,9 @@
 :root {
+  --scrollHeight: 10;
   --font-color: 24, 24, 24;
   --accent: 157, 40, 162;
+  --bg: 247, 247, 247;
+  --scrollPos: 0;
 }
 
 * {
@@ -8,14 +11,18 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 
 a {
   text-decoration: none;
   color: rgb(var(--accent));
 }
-
+::-webkit-scrollbar {
+  width: 0;
+}
 body {
+  background-color: rgb(var(--bg));
   height: 100vh;
 }
 
@@ -56,6 +63,7 @@ header {
 
 main {
   height: 86%;
+  overflow: -moz-scrollbars-none;
 }
 
 #threed-container {
@@ -150,17 +158,27 @@ main {
   overflow: scroll;
 }
 
+#projects-main.noscroll {
+  overflow: hidden;
+}
+
 .project {
   position: relative;
   height: 86vh;
   scroll-snap-align: center;
   transform: scale(0.9);
-  transition: transform 1s;
-  background-color: #ddd;
-  overflow-y: scroll;
+  transition: all 1s;
+  background-color: rgb(var(--bg));
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 5px 5px 2px rgba(12, 12, 12, 0.2);
 }
 
 .content {
+  transform: translate(
+    calc(var(--scrollPos) * -1px),
+    calc(var(--scrollPos) * 1px)
+  );
   display: flex;
   height: 90%;
   width: 100vw;
@@ -177,8 +195,11 @@ main {
   }
 }
 
-.project:hover {
+.project.active {
   transform: scale(1);
+  border-radius: 0px;
+  box-shadow: 30px 30px 7px rgba(12, 12, 12, 0.1);
+  overflow-y: scroll;
 }
 
 .website-preview {
@@ -240,27 +261,26 @@ main {
   }
 }
 
-#project-one-scroll {
-  height: 400vw;
+.project-scroll {
+  height: calc(var(--scrollHeight) * 1px);
   width: 2rem;
-  background-color: red;
   position: absolute;
 }
 
 .explore-button {
-  transition: transform 0.5s;
+  transform: translateY(calc(var(--scrollPos) * 1px));
+  z-index: 1;
   position: absolute;
   right: 5%;
   cursor: pointer;
   .explore-line {
+    z-index: 10;
     background-color: rgb(var(--font-color));
   }
   &:hover {
     color: rgb(var(--accent));
-    transform: scale(1.05);
     .explore-line {
       background-color: rgb(var(--accent));
-      transform: scale(1.05);
     }
   }
 }
