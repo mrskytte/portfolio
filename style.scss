@@ -28,6 +28,7 @@ body {
 
 header {
   height: 14%;
+  border-bottom: 3px solid rgb(var(--font-color), 0.1);
   nav {
     height: 100%;
     width: 88%;
@@ -167,13 +168,21 @@ main {
   height: 86vh;
   scroll-snap-align: center;
   transform: scale(0.9);
-  transition: all 1s;
+  transition: transform 1s, box-shadow 1s, border-radius 1s;
   background-color: rgb(var(--bg));
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 5px 5px 2px rgba(12, 12, 12, 0.2);
+  border-top: 3px solid rgb(var(--font-color), 0.01);
+  border-left: 3px solid rgb(var(--font-color), 0.01);
+  &.active {
+    transform: scale(1);
+    border-radius: 0px;
+    box-shadow: 30px 30px 7px rgba(12, 12, 12, 0.1);
+    overflow-y: scroll;
+    border: none;
+  }
 }
-
 .content {
   transform: translate(
     calc(var(--scrollPos) * -1px),
@@ -194,12 +203,8 @@ main {
     width: 100vw;
   }
 }
-
-.project.active {
-  transform: scale(1);
-  border-radius: 0px;
-  box-shadow: 30px 30px 7px rgba(12, 12, 12, 0.1);
-  overflow-y: scroll;
+.section-container {
+  margin-left: 5rem;
 }
 
 .website-preview {
@@ -235,12 +240,6 @@ main {
     margin-top: auto;
     width: 80%;
   }
-}
-
-.content-image {
-  width: 30vw;
-  height: 60%;
-  background-color: rebeccapurple;
 }
 
 .section-container:nth-child(even) {
@@ -303,6 +302,166 @@ main {
     transform: scale(1.05);
     .explore-line {
       transform: scale(1.05);
+    }
+  }
+}
+
+.website-preview {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-image {
+  width: 30vw;
+  height: 60%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#electricity-project {
+  .website-preview {
+    background-image: url(/static/assets/website-previews/electricity.gif);
+  }
+  .first {
+    width: 60vw;
+    .content-image {
+      background-image: url(/static/assets/images/bulb.svg);
+      transform: translateX(-30%);
+    }
+    .content-container {
+      width: 60%;
+    }
+  }
+  .second {
+    width: 70vw;
+    .content-image {
+      flex-shrink: 0;
+      background-image: url(/static/assets/images/cityscape.svg);
+      width: 40vw;
+      transform: translateX(-50%);
+      height: 40%;
+    }
+    .content-container {
+      flex-shrink: 0;
+      width: 60%;
+    }
+  }
+  .third .content-image {
+    background-image: url(/static/assets/images/activity-diagram.JPG);
+    flex-shrink: 0;
+    width: 50%;
+    height: 70%;
+  }
+}
+
+#hogwarts-project {
+  .website-preview {
+    background-image: url(/static/assets/website-previews/hogwarts.gif);
+  }
+  .first {
+    width: 60vw;
+    .content-image {
+      background-image: url(/static/assets/images/hogwarts-json.png);
+      transform: translateX(-30%);
+    }
+    .content-container {
+      width: 60%;
+    }
+  }
+  .second {
+    width: 70vw;
+    .content-image {
+      flex-shrink: 0;
+      background-image: url(/static/assets/images/harry-modal.png);
+      width: 40vw;
+      transform: translateX(-50%);
+      height: 40%;
+    }
+    .content-container {
+      flex-shrink: 0;
+      width: 60%;
+    }
+  }
+  .third .content-image {
+    background-image: url(/static/assets/images/hogwarts-color.png);
+    transform: translateX(-50%);
+  }
+}
+
+#human-project {
+  .website-preview {
+    background-image: url(/static/assets/website-previews/human.gif);
+  }
+  .first {
+    width: 60vw;
+    .content-image {
+      background-image: url(/static/assets/images/human-overview.png);
+      transform: translateX(-40%);
+      width: 60%;
+      flex-shrink: 0;
+    }
+    .content-container {
+      width: 60%;
+      flex-shrink: 0;
+    }
+  }
+  .second {
+    width: 70vw;
+    .content-image {
+      flex-shrink: 0;
+      background-image: url(/static/assets/images/human-columns.gif);
+      width: 50%;
+      transform: translateX(-50%);
+      height: 50%;
+    }
+    .content-container {
+      flex-shrink: 0;
+      width: 60%;
+    }
+  }
+  .third {
+    width: 40vw;
+    .content-container {
+      width: 100%;
+      margin-bottom: auto;
+      margin-top: auto;
+    }
+  }
+}
+
+#musil-project {
+  .website-preview {
+    background-image: url(/static/assets/website-previews/musil.gif);
+  }
+  .first {
+    width: 60vw;
+    .content-image {
+      background-image: url(/static/assets/images/musil-scroll.gif);
+      transform: translateX(-40%);
+      width: 60%;
+      flex-shrink: 0;
+    }
+    .content-container {
+      width: 60%;
+      flex-shrink: 0;
+    }
+  }
+  .second {
+    width: 50vw;
+    .content-container {
+      width: 100%;
+      margin-top: auto;
+    }
+  }
+  .third {
+    .content-image {
+      flex-shrink: 0;
+      background-image: url(/static/assets/images/trunk-test.png);
+      height: 70%;
+    }
+    .content-container {
+      flex-shrink: 0;
+      width: 50%;
     }
   }
 }
