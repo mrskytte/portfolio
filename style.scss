@@ -141,10 +141,9 @@ main {
         --skill-percentage: 0%;
         height: 1em;
         width: 100%;
-        border: 1px solid rgba(var(--font-color), 0.1);
-        transition: background-image 1s;
+        border: 1px solid rgba(var(--accent), 0.5);
         &:before {
-          transition: width 2s ease;
+          transition: width 2s ease 0.4s;
           position: absolute;
           content: "";
           height: 100%;
@@ -193,6 +192,12 @@ main {
   font-size: 2.3vw;
   h1 {
     color: rgb(var(--font-color));
+  }
+  a {
+    color: rgb(var(--accent));
+    &:hover {
+      color: rgb(var(--links));
+    }
   }
 }
 
@@ -243,13 +248,18 @@ main {
   height: 86vh;
   scroll-snap-align: center;
   transform: scale(0.9);
-  transition: transform 1s, box-shadow 1s, border-radius 1s;
+  transition: transform 1s, box-shadow 1s, border-radius 1s, opacity 1s;
   background-color: rgb(var(--bg));
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 5px 5px 2px rgba(12, 12, 12, 0.2);
   border-top: 3px solid rgb(var(--font-color), 0.01);
   border-left: 3px solid rgb(var(--font-color), 0.01);
+  &.out-of-view {
+    box-shadow: none;
+    opacity: 0;
+    transform: translate(5px, 5px) scale(0.9);
+  }
   &.active {
     transform: scale(1);
     border-radius: 0px;

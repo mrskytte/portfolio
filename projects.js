@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 function init() {
   prepareProjects();
+  createIntersectionObserver();
 }
 
 function prepareProjects() {
@@ -96,14 +97,34 @@ function activateScroll(container) {
     container.style.setProperty("--scrollPos", scrollPosition);
   });
 }
-// calculate width of content container
 
-// set height of scroll container
+function createIntersectionObserver() {
+  let options = {
+    root: document.querySelector("#bio-container"),
+    threshold: [1, 0],
+  };
 
-// add eventlistener to explore button
+  let observer = new IntersectionObserver(handleIntersect, options);
 
-// change explore button text
+  let targets = document.querySelectorAll(".project");
+  targets.forEach((oneTarget) => {
+    observer.observe(oneTarget);
+  });
 
-// calculate scroll percentage
+  function handleIntersect(entries, observer) {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio <= 0) {
+        console.log(entry.target + " " + entry.target.classList);
+        entry.target.classList.add("out-of-view");
+      } else {
+        console.log(entry.target.getAttribute("id") + " is inside");
+        entry.target.classList.remove("out-of-view");
+      }
+    });
+  }
+}
 
-// move content element to the left using translateX
+function setPercentage(skill, percentage) {
+  console.log("called");
+  skill.style.setProperty("--skill-percentage", percentage);
+}
