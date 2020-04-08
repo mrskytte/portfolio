@@ -3,15 +3,40 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  getSkillsData();
+  createIntersectionObserver();
 }
 
-function getSkillsData() {
-  let skillPercentages = document.querySelectorAll(".percentage");
-  skillPercentages.forEach(setPercentage);
+function createIntersectionObserver() {
+  let options = {
+    root: document.querySelector("#bio-container"),
+    threshold: [1, 0],
+  };
 
-  function setPercentage(skill) {
-    console.log(skill);
-    skill.style.setProperty("--skill-percentage", skill.dataset.percentage);
+  let skillsObserver = new IntersectionObserver(handleIntersect, options);
+
+  let targets = document.querySelectorAll(".skills-list .skill");
+  targets.forEach((oneTarget) => {
+    skillsObserver.observe(oneTarget);
+  });
+
+  function handleIntersect(entries, observer) {
+    if (entries[0].intersectionRatio <= 0) {
+      console.log("outside");
+      entries.forEach((entry) => {
+        let skill = entry.target.children[1];
+        setPercentage(skill, "0%");
+      });
+    } else {
+      console.log("inside");
+      entries.forEach((entry) => {
+        let skill = entry.target.children[1];
+        setPercentage(skill, skill.dataset.percentage);
+      });
+    }
   }
+}
+
+function setPercentage(skill, percentage) {
+  console.log("called");
+  skill.style.setProperty("--skill-percentage", percentage);
 }
