@@ -1,12 +1,14 @@
 :root {
   --scrollHeight: 10;
-  --font-color: 24, 24, 24;
-  --accent: 157, 40, 162;
+  --font-color: 75, 75, 75;
+  --accent: 247, 127, 0;
+  --links: 17, 171, 128;
   --bg: 247, 247, 247;
   --scrollPos: 0;
 }
 
 * {
+  scrollbar-width: 0;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   margin: 0;
@@ -16,14 +18,22 @@
 
 a {
   text-decoration: none;
-  color: rgb(var(--accent));
+  color: rgb(var(--links));
+}
+li {
+  list-style-type: none;
 }
 ::-webkit-scrollbar {
   width: 0;
 }
+
 body {
   background-color: rgb(var(--bg));
   height: 100vh;
+  color: rgb(var(--font-color));
+}
+h1 {
+  color: rgb(var(--accent));
 }
 
 header {
@@ -64,7 +74,6 @@ header {
 
 main {
   height: 86%;
-  overflow: -moz-scrollbars-none;
 }
 
 #threed-container {
@@ -78,32 +87,94 @@ main {
 #bio-main {
   display: flex;
   justify-content: space-around;
-  padding-top: 5%;
 }
 
 #bio-pic {
-  height: 67%;
-  width: 37%;
-  background-image: url("static/assets/images/bio-pic.png");
-  background-position: center;
-  background-size: cover;
-  border-radius: 5px;
-  -webkit-box-shadow: 10px 10px 46px -1px rgba(0, 0, 0, 0.35);
-  -moz-box-shadow: 10px 10px 46px -1px rgba(0, 0, 0, 0.35);
-  box-shadow: 10px 10px 46px -1px rgba(0, 0, 0, 0.35);
+  height: 100%;
+  width: 40%;
+  background-color: rgba(var(--accent), 1);
+  box-shadow: 5px 0px 5px rgba(var(--font-color), 0.2);
 }
 
-#bio-container {
-  height: 67%;
-  width: 37%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#bio-main {
+  p {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 2em;
+  }
+  #bio-container {
+    width: 60%;
+    overflow: scroll;
+  }
+  section {
+    &:last-of-type {
+      margin-bottom: 5em;
+    }
+    margin: 5rem auto 2rem 8rem;
+    width: 70%;
+    h1 {
+      font-size: 2.2vw;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-size: 1.5vw;
+      font-weight: 300;
+      color: rgb(var(--accent));
+    }
+    .year {
+      font-size: 0.9em;
+    }
+    .description {
+      margin-bottom: 1em;
+    }
+    .skills-list {
+      position: relative;
+      display: grid;
+      grid-gap: 2em;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      li {
+        font-size: 1.1em;
+        position: relative;
+      }
+      .percentage {
+        position: relative;
+        --skill-percentage: 0%;
+        height: 1em;
+        width: 100%;
+        border: 1px solid rgba(var(--font-color), 0.1);
+        transition: background-image 1s;
+        &:before {
+          transition: width 2s ease;
+          position: absolute;
+          content: "";
+          height: 100%;
+          width: var(--skill-percentage);
+          background-color: rgb(var(--accent));
+        }
+      }
+      li:last-child {
+        color: rgba(var(--font-color), 0.7);
+        .teamwork {
+          display: flex;
+        }
+        .teamwork-points {
+          font-size: 1em;
+          margin: 1em 2em 0 1em;
+          color: rgb(var(--font-color));
+        }
+      }
+    }
+  }
 }
-
-#bio-text {
+.education-list li {
+  position: relative;
+  margin-bottom: 2em;
+  p:last-child {
+    font-size: 1em;
+  }
+}
+.bio-text {
   width: 70%;
-  line-height: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -120,6 +191,9 @@ main {
   margin-left: -12rem;
   margin-top: 3rem;
   font-size: 2.3vw;
+  h1 {
+    color: rgb(var(--font-color));
+  }
 }
 
 #top {
@@ -164,6 +238,7 @@ main {
 }
 
 .project {
+  padding-top: 1em;
   position: relative;
   height: 86vh;
   scroll-snap-align: center;
@@ -288,7 +363,7 @@ main {
   position: absolute;
   height: 2px;
   width: 1.5rem;
-  background-color: rgb(var(--accent));
+  background-color: rgb(var(--links));
   margin: 0.5em auto auto 0.5em;
 }
 
