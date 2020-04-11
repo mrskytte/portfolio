@@ -9,7 +9,7 @@ function init() {
 function createIntersectionObserver() {
   let options = {
     root: document.querySelector("#bio-container"),
-    threshold: [1, 0],
+    threshold: [1],
   };
 
   let skillsObserver = new IntersectionObserver(handleIntersect, options);
@@ -20,6 +20,7 @@ function createIntersectionObserver() {
   });
 
   function handleIntersect(entries, observer) {
+    console.log(entries[0].intersectionRatio);
     if (entries[0].intersectionRatio <= 0) {
       console.log("outside");
       entries.forEach((entry) => {

@@ -26,7 +26,9 @@ li {
 ::-webkit-scrollbar {
   width: 0;
 }
-
+.small-screen {
+  display: none;
+}
 body {
   background-color: rgb(var(--bg));
   height: 100vh;
@@ -39,6 +41,9 @@ h1 {
 header {
   height: 14%;
   border-bottom: 3px solid rgb(var(--font-color), 0.1);
+  .small-screen {
+    display: none;
+  }
   nav {
     height: 100%;
     width: 88%;
@@ -71,6 +76,20 @@ header {
     }
   }
 }
+@media screen and (max-width: 600px) {
+  header {
+    height: 7%;
+    .small-screen {
+      display: inherit;
+    }
+    .large-screen {
+      display: none;
+    }
+    nav ul li {
+      margin-right: 7.5%;
+    }
+  }
+}
 
 main {
   height: 86%;
@@ -84,11 +103,6 @@ main {
   margin-top: 100%;
 }
 
-#bio-main {
-  display: flex;
-  justify-content: space-around;
-}
-
 #bio-pic {
   height: 100%;
   width: 40%;
@@ -97,6 +111,8 @@ main {
 }
 
 #bio-main {
+  display: flex;
+  justify-content: space-around;
   p {
     font-size: 1.1em;
     font-weight: 300;
@@ -177,7 +193,47 @@ main {
   margin-top: 2rem;
 }
 
+@media screen and (max-width: 600px) {
+  #bio-pic {
+    height: 40%;
+    width: 100%;
+    background-color: rgba(var(--accent), 1);
+    box-shadow: 5px 0px 5px rgba(var(--font-color), 0.2);
+  }
+
+  #bio-main {
+    display: block;
+    .bio-text {
+      width: 90%;
+    }
+    p {
+      line-height: 1.5em;
+    }
+    #bio-container {
+      margin: auto;
+      margin-top: -2em;
+      width: 90%;
+      section {
+        width: 100%;
+        margin: auto;
+        h1 {
+          margin-top: 2em;
+          font-size: 2em;
+        }
+        h2 {
+          font-size: 1.3em;
+          font-weight: 300;
+          color: rgb(var(--accent));
+        }
+      }
+    }
+  }
+}
+
 #contact-main {
+  .contact-hi {
+    color: rgb(var(--accent));
+  }
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
@@ -200,7 +256,35 @@ main {
     }
   }
 }
+@media screen and (max-width: 600px) {
+  #contact-main {
+    display: block;
+    width: 100%;
+    margin: 2em auto auto 0.5em;
+    font-size: 1.3em;
+    grid-row-gap: 0.7rem;
+    #top {
+      font-size: 3em;
+      margin: auto auto 1em auto;
+    }
 
+    .left-contact-text,
+    .right-contact-text {
+      text-align: left;
+      width: 80%;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 0;
+    }
+    .right-contact-text {
+      width: 60%;
+      margin-left: auto;
+      &#right-one {
+        width: 70%;
+      }
+    }
+  }
+}
 #top {
   grid-area: top;
 }
@@ -226,11 +310,6 @@ main {
 
 .left-contact-text {
   text-align: right;
-}
-
-#projects-header {
-  height: 14%;
-  background-color: transparent;
 }
 
 #projects-main {
@@ -288,6 +367,7 @@ main {
     width: 100vw;
   }
 }
+
 .section-container {
   margin-left: 5rem;
 }
@@ -394,6 +474,7 @@ main {
 .website-preview {
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .content-image {
@@ -547,6 +628,125 @@ main {
     .content-container {
       flex-shrink: 0;
       width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .return-button {
+    text-align: center;
+    width: 1.3em;
+    height: 1.3em;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    transform: translateX(92vw);
+    color: rgb(var(--accent));
+    opacity: 0;
+    border: 2px solid rgb(var(--accent));
+    border-radius: 50%;
+    background-color: rgb(var(--bg));
+  }
+  #projects-main {
+    scroll-snap-type: none;
+  }
+
+  .project-scroll {
+    display: none;
+  }
+  .large-screen {
+    display: none;
+  }
+  .small-screen {
+    display: inherit;
+  }
+  .project {
+    position: relative;
+    height: 80vh;
+    &.active {
+      transform: scale(1);
+      border-radius: 0px;
+      box-shadow: 30px 30px 7px rgba(12, 12, 12, 0.1);
+      overflow: scroll;
+      border: none;
+      .return-button {
+        opacity: 1;
+      }
+    }
+  }
+  .content {
+    height: 90vh;
+    display: block;
+    .website-preview {
+      width: 110%;
+      margin-left: -5%;
+      margin-bottom: 0.5em;
+      height: 30vh;
+      background-image: url(static/assets/website-previews/electricity.gif);
+    }
+    .front-section-container,
+    .section-container {
+      display: block;
+    }
+    .section-container {
+      margin: auto;
+    }
+    .summary-title {
+      font-size: 2.3em;
+      margin-bottom: 0.5em;
+    }
+    .project-summary {
+      margin: auto;
+    }
+    .summary-body {
+      font-size: 1em;
+      line-height: 1.5em;
+      padding: 0 0.3em;
+      margin: auto;
+    }
+    .project-text {
+      width: 90%;
+    }
+  }
+  .explore-button,
+  .website-button {
+    position: static;
+    margin: 2em auto 4em 4em;
+  }
+  #electricity-project,
+  #hogwarts-project,
+  #musil-project,
+  #human-project {
+    .website-button {
+      transform: translateY(-4em);
+    }
+    .first,
+    .second,
+    .third {
+      transition: opacity 0.9s;
+      pointer-events: none;
+      transform: translateY(-6em);
+      opacity: 0;
+      width: 90%;
+      .project-text-title {
+        font-size: 1.6em;
+        margin-top: 1em;
+      }
+      .content-container {
+        width: 100%;
+        p {
+          font-size: 1em;
+          width: 100%;
+          padding: 0.5em;
+        }
+      }
+    }
+    &.active {
+      .first,
+      .second,
+      .third {
+        opacity: 1;
+      }
     }
   }
 }
