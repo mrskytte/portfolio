@@ -7,7 +7,15 @@
     <title>Christoffer Skytte Wielsøe | Projects</title>
     <link rel="stylesheet" href="style.scss" />
   </head>
-  <body id="projects-body">
+  <body id="projects-body" data-barba="wrapper">
+    <ul class="transition">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
     <header id="projects-header">
       <nav>
         <ul class="nav">
@@ -29,7 +37,11 @@
         </ul>
       </nav>
     </header>
-    <main id="projects-main">
+    <main
+      id="projects-main"
+      data-barba="container"
+      data-barba-namespace="projects"
+    >
       <article id="electricity-project" class="project out-of-view">
         <p class="return-button small-screen">X</p>
         <div class="project-scroll"></div>
@@ -339,6 +351,7 @@
         </p>
       </article>
     </main>
+    <script src="main.js"></script>
     <script src="projects.js"></script>
   </body>
 </html>
