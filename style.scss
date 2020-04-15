@@ -1,4 +1,4 @@
-:root {
+html {
   --scrollHeight: 10;
   --font-color: 75, 75, 75;
   --accent: 247, 127, 0;
@@ -59,9 +59,13 @@ header {
       li {
         margin-right: 12.5%;
         list-style-type: none;
+
         a {
           text-decoration: none;
           color: rgb(var(--font-color));
+          &:hover {
+            color: rgb(var(--links));
+          }
         }
       }
       .active {
@@ -74,6 +78,63 @@ header {
         margin-right: 0;
       }
     }
+  }
+}
+
+.index-ul {
+  margin: auto;
+  width: 80%;
+  height: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    .hover {
+      position: absolute;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      animation: rotation var(--speed) infinite linear;
+      --speed: 90s;
+      background-image: url("static/assets/svg/hover.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    &:first-child .hover {
+      --speed: 20s;
+    }
+    &:last-child .hover {
+      --speed: 50s;
+    }
+    a {
+      transition: font-size 0.5s;
+      color: rgb(var(--font-color));
+      font-size: 2vw;
+      &:hover {
+        font-size: 1.8vw;
+        color: rgb(var(--links));
+        + .hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
   }
 }
 @media screen and (max-width: 600px) {
@@ -95,19 +156,17 @@ main {
   height: 86%;
 }
 
-#threed-container {
-  width: 70%;
-  height: 60%;
-  outline: 3px solid black;
-  margin: auto;
-  margin-top: 100%;
-}
-
 #bio-pic {
   height: 100%;
   width: 40%;
   background-color: rgba(var(--accent), 1);
   box-shadow: 5px 0px 5px rgba(var(--font-color), 0.2);
+  overflow: hidden;
+  img {
+    width: 100%;
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(var(--font-color), 0.2));
+    filter: drop-shadow(5px 5px 5px rgba(var(--font-color), 0.2));
+  }
 }
 
 #bio-main {
