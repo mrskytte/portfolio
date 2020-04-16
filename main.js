@@ -1,7 +1,6 @@
-// import quicklink from "quicklink";
+"use strict";
 import barba from "@barba/core";
 import gsap from "gsap";
-("use strict");
 
 window.addEventListener("load", () => {
   console.log("ready");
