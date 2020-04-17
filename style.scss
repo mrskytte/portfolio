@@ -28,7 +28,9 @@ ul.transition {
   pointer-events: none;
   li {
     transform: scaleY(0);
-    background: rgb(var(--bg));
+    // background: rgba(255, 190, 120);
+    background: rgba(var(--accent));
+
     width: 20%;
   }
 }

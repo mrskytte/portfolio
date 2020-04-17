@@ -1,59 +1,62 @@
 "use strict";
 import barba from "@barba/core";
 import gsap from "gsap";
+import { bioInit } from "./static/assets/js/bio.js";
+import { projectsInit } from "./static/assets/js/projects.js";
 
 window.addEventListener("load", () => {
-  console.log("ready");
+  initBarba();
+  begin();
 });
+function initBarba() {
+  barba.init({
+    transitions: [
+      {
+        leave(data) {
+          console.log("leave");
 
-function delay(n) {
-  n = n || 2000;
-  return new Promise((done) => {
-    setTimeout(() => {
-      done();
-    }, n);
+          data.trigger.parentElement.parentElement
+            .querySelector("li a.active")
+            .classList.remove("active");
+
+          data.trigger.classList.add("active");
+          return gsap.to("ul.transition li", {
+            scaleY: 1,
+            transformOrigin: "left bottom",
+            stagger: 0.2,
+            onComplete: () => {
+              data.current.container.style.display = "none";
+            },
+          });
+        },
+        enter(data) {
+          console.log("enter");
+          let done = this.async();
+          return gsap.to("ul.transition li", {
+            scaleY: 0,
+            stagger: 0.2,
+            onComplete: () => {
+              done();
+              begin();
+            },
+          });
+        },
+        once(data) {
+          console.log("once");
+          let done = this.async();
+          return gsap.from("ul.transition li", {
+            scaleY: 1,
+            stagger: 0.2,
+            transformOrigin: "left bottom",
+            onComplete: done,
+          });
+        },
+      },
+    ],
   });
 }
 
-function pageTransition() {
-  let tl = gsap.timeline();
-
-  tl.to("ul.transition li", {
-    duration: 0.5,
-    scaleY: 1,
-    transformOrigin: "bottom left",
-    stagger: 0.2,
-  }).to("ul.transition li", {
-    duration: 0.5,
-    scaleY: 0,
-    transformOrigin: "bottom left",
-    stagger: 0.1,
-    delay: 0.1,
-  });
+function begin() {
+  bioInit();
+  projectsInit();
 }
-
-function contentAnimation() {
-  console.log("next page");
-}
-
-barba.init({
-  sync: true,
-
-  transitions: [
-    {
-      async leave(data) {
-        const done = this.async();
-
-        pageTransition();
-        await delay(1500);
-        done();
-      },
-      async enter(data) {
-        contentAnimation();
-      },
-      async once(data) {
-        contentAnimation();
-      },
-    },
-  ],
-});
