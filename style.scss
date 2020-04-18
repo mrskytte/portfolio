@@ -131,6 +131,22 @@ header {
     }
   }
 }
+@media screen and (max-width: 600px) {
+  .index-ul {
+    margin-top: 2em;
+    flex-direction: column;
+    li {
+      .hover {
+        opacity: 1;
+        width: 60%;
+        height: 60%;
+      }
+      a {
+        font-size: 2em;
+      }
+    }
+  }
+}
 
 @keyframes rotation {
   to {
