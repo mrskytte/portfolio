@@ -1,7 +1,7 @@
 "use strict";
-import { gsap } from "gsap";
+import gsap from "gsap";
 
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("load", init);
 
 function init() {
   createIntersectionObserver();
@@ -14,7 +14,7 @@ function init() {
 
 function createIntersectionObserver() {
   let options = {
-    root: document.querySelector("#bio-container"),
+    root: document.querySelector("#project-container"),
     threshold: [1, 0],
   };
 
