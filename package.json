@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html --open",
-    "build": "parcel build *.html --public-url ./"
+    "build": "parcel build *.html --public-url ./",
+    "deploy": "rm -rf dist/ && npm run build && gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +19,11 @@
     "sass": "^1.26.3"
   },
   "dependencies": {
+    "gh": "^2.8.6",
+    "gh-pages": "^2.2.0",
+    "github": "^14.0.0",
     "gsap": "^3.2.6",
+    "pages": "0.0.16",
     "quicklink": "^2.0.0-alpha"
   }
 }
