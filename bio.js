@@ -1,6 +1,6 @@
 "use strict";
 
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("load", init);
 
 function init() {
   createIntersectionObserver();
