@@ -38,7 +38,12 @@ function createIntersectionObserver() {
 
 function prepareProjectsLargeScreen() {
   let projectContainers = document.querySelectorAll(".project");
+  projectContainers.forEach(resetScroll);
   projectContainers.forEach(prepareScroll);
+
+  function resetScroll(container) {
+    container.scrollTop = 0;
+  }
 
   function prepareScroll(container) {
     let project = container.getAttribute("id");
