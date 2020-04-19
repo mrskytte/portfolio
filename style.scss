@@ -482,7 +482,7 @@ main {
   }
 }
 
-.section-container:nth-child(even) {
+.section-container:nth-child(odd) {
   .content-container {
     margin-top: auto;
   }
@@ -491,7 +491,7 @@ main {
   }
 }
 
-.section-container:nth-child(odd) {
+.section-container:nth-child(even) {
   .content-container {
     margin-bottom: auto;
   }
