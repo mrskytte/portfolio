@@ -403,7 +403,7 @@ main {
   scroll-snap-align: center;
   transform: scale(0.9);
   transition: transform 1s, box-shadow 1s, border-radius 1s, opacity 1s;
-  background-color: rgb(var(--bg));
+  background-color: white;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 5px 5px 2px rgba(12, 12, 12, 0.2);
@@ -423,10 +423,9 @@ main {
   }
 }
 .content {
-  transform: translate(
-    calc(var(--scrollPos) * -1px),
-    calc(var(--scrollPos) * 1px)
-  );
+  position: sticky;
+  top: 0;
+  transform: translateX(calc(var(--scrollPos) * -1px));
   display: flex;
   height: 90%;
   width: 100vw;
@@ -511,6 +510,7 @@ main {
   z-index: 1;
   position: absolute;
   right: 5%;
+  bottom: 5%;
   cursor: pointer;
   .explore-line {
     z-index: 10;
@@ -603,7 +603,7 @@ main {
     width: 60vw;
     .content-image {
       background-image: url(/static/assets/images/hogwarts-json.png);
-      transform: translateX(-30%);
+      transform: translateX(-15%);
     }
     .content-container {
       width: 60%;
@@ -615,7 +615,7 @@ main {
       flex-shrink: 0;
       background-image: url(/static/assets/images/harry-modal.png);
       width: 40vw;
-      transform: translateX(-50%);
+      transform: translateX(-20%);
       height: 40%;
     }
     .content-container {
@@ -625,7 +625,7 @@ main {
   }
   .third .content-image {
     background-image: url(/static/assets/images/hogwarts-color.png);
-    transform: translateX(-50%);
+    transform: translateX(-20%);
   }
 }
 

@@ -81,7 +81,7 @@ function prepareProjectsLargeScreen() {
     tl.to(button.lastElementChild, {
       x: -145,
       width: 140,
-      backgroundColor: "rgb(247, 247, 247)",
+      backgroundColor: "white",
     })
       .to(button.lastElementChild, {
         height: 17,
