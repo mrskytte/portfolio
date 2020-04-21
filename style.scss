@@ -126,7 +126,7 @@ header {
     }
     a {
       transition: font-size 0.5s;
-      color: rgba(var(--font-color), 0.5);
+      color: rgb(var(--bg));
       font-size: 2vw;
       &:hover {
         font-size: 1.8vw;
@@ -498,19 +498,19 @@ main {
 
 .section-container:nth-child(odd) {
   .content-container {
-    margin-top: auto;
+    margin-bottom: auto;
   }
   .content-image {
-    margin-bottom: auto;
+    margin-top: auto;
   }
 }
 
 .section-container:nth-child(even) {
   .content-container {
-    margin-bottom: auto;
+    margin-top: auto;
   }
   .content-image {
-    margin-top: auto;
+    margin-bottom: auto;
   }
 }
 
