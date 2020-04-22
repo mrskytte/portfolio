@@ -757,9 +757,6 @@ main {
     border-radius: 50%;
     background-color: rgb(var(--bg));
   }
-  #projects-main {
-    scroll-snap-type: none;
-  }
 
   .project-scroll {
     display: none;
